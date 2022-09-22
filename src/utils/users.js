@@ -42,5 +42,3 @@ module.exports = {
     getUser,
     getUsersInRoom
 }
-
-console.log(addUser({id:33, username:'oguzhan', room:'addf'}))

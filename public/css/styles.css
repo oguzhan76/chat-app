@@ -63,6 +63,7 @@ button:disabled {
     width: 100vw;
     height: 100vh;   
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -71,7 +72,11 @@ button:disabled {
     box-shadow: 0px 0px 17px 1px #1D1F26;
     background: #F7F7FA;
     padding: 24px;
-    width: 250px;
+    width: 40%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .centered-form button {
@@ -81,6 +86,56 @@ button:disabled {
 .centered-form input {
     margin-bottom: 16px;
     width: 100%;
+}
+
+/* Lobby */
+.box{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: end;
+    height: 80%;
+}
+
+.roomlist-side {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 0px 12px 0 0;
+    height: 100%;
+}
+
+.roomlist {
+    background-color: #ede8e8;
+    flex: 1;
+    overflow-y: scroll;
+    align-self: stretch;
+}
+
+.room-button {
+    cursor: pointer;
+    text-align: left;
+    padding: 12px;
+    margin-bottom: 4px;
+    background: rgb(237, 232, 232);
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    transition: background .3s ease;
+}
+
+.room-button:hover {
+    background: rgb(135, 132, 132);
+}
+
+.room-button.selected{
+    background: rgb(160, 195, 164);
+    color: white;
+}
+
+.join-form {
+    flex: 1;
 }
 
 /* Chat Page Layout */

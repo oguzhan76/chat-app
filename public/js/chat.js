@@ -69,15 +69,16 @@ socket.on('locationMessage', (message) => {
     autoScroll();
 })
 
+// When server updates room data
 socket.on('roomData', (room) => {
     const html = Mustache.render(sidebarTemplate, {
         room: room.room,
         users: room.users
-    })
+    });
     document.querySelector('#sidebar').innerHTML = html;
 });
 
-
+// Send message
 $messageForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -97,6 +98,7 @@ $messageForm.addEventListener('submit', (e) => {
     message.value = '';
 });
     
+// Send location
 $locationButton.addEventListener('click', () => {
     if(!navigator.geolocation)
         return alert('Your browser does not support geolocation');
