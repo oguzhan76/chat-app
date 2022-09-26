@@ -24,8 +24,6 @@ app.use(express.static(publicDirectory));
 
 // Runs for every client conection
 io.on('connection', (socket) => {
-    console.log('New socket connection: ', socket.id);
-
     socket.emit('roomsList', getRooms());
 
     socket.on('join', ({username, roomName, password }, callback) => {
@@ -61,7 +59,6 @@ io.on('connection', (socket) => {
         //Send the message to the room
         const room = getRoom(user.room);
         if(room.lastSender === user.id){
-            console.log('ayni sender');
             io.to(user.room).emit('addMessage', message);
         }
         else{

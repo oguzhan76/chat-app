@@ -16,7 +16,6 @@ $joinForm.addEventListener('submit', () => {
 })
 
 socket.on('roomsList', (rooms) => {
-    console.log(rooms);
     const html = Mustache.render(roomButtonTemplate, { rooms });
     document.querySelector('#roomList').innerHTML = html;
 

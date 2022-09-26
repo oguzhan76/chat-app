@@ -65,7 +65,6 @@ socket.on('addMessage', (message) => {
 });
 
 socket.on('locationMessage', (message) => {
-    console.log(message);
     const html = Mustache.render(locationURLTemplate, { 
         url: message.url,
         username: message.username,
@@ -99,8 +98,6 @@ $messageForm.addEventListener('submit', (e) => {
         
         if(error)
             return console.log(error);
-        
-        console.log('The message was delivered')
     });
     message.value = '';
 });
@@ -118,7 +115,6 @@ $locationButton.addEventListener('click', () => {
             longitude: position.coords.longitude
         }, (error) => {
             $locationButton.disabled = false;
-            console.log("Location shared!");
         });
     });
 });

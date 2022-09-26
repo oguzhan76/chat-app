@@ -28,7 +28,6 @@ const registerUserToRoom = (user, room, password) => {
         if(selectedRoom.password !== password)
             return { roomError: "Password is wrong!" };
         selectedRoom.users.push(user);
-        console.log(selectedRoom);
         return { room: selectedRoom };
     }
 }
