@@ -12,7 +12,7 @@ const getAllUsersInRoom = (roomName) => {
 }
 
 const getRoom = (roomName) => {
-    
+    return rooms.find(room => room.roomName === roomName);
 }
 
 const registerUserToRoom = (user, room, password) => {
@@ -20,7 +20,7 @@ const registerUserToRoom = (user, room, password) => {
     // Update room array
     const selectedRoom = rooms.find(curRoom => curRoom.roomName === room);
     if(!selectedRoom){
-        const newRoom = { roomName: room, password, users: [user]};
+        const newRoom = { roomName: room, password, users: [user], lastSender: null};
         rooms.push(newRoom);        
         return { room: newRoom };
     }
@@ -47,6 +47,7 @@ const deregisterUserFromRoom = (userId, roomName) => {
 }
 
 module.exports = {
+    getRoom,
     getRooms,
     getAllUsersInRoom,
     registerUserToRoom,

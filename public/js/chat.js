@@ -11,6 +11,7 @@ const $messages = document.querySelector('#messages');
 const messageTemplate = document.querySelector('#message-template').innerHTML;
 const locationURLTemplate = document.querySelector('#locationURL-template').innerHTML;
 const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML;
+const messageAddTemplate = document.querySelector('#message-add-template').innerHTML;
 
 //Options
 // location.search return query paramters on the url. second arg is options object
@@ -46,7 +47,6 @@ socket.on('welcome', (message) => {
 })
 
 socket.on('message', (message) => {
-    console.log(message.text);
     const html = Mustache.render(messageTemplate, { 
         message: message.text,
         username: message.username,
@@ -56,6 +56,13 @@ socket.on('message', (message) => {
 
     autoScroll();
 })
+
+socket.on('addMessage', (message) => {
+    const html = Mustache.render(messageAddTemplate, { message });
+    $messages.insertAdjacentHTML("beforeend", html);
+
+    autoScroll();
+});
 
 socket.on('locationMessage', (message) => {
     console.log(message);

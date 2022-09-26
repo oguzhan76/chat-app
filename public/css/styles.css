@@ -40,7 +40,7 @@ input {
 button {
     cursor: pointer;
     padding: 12px;
-    background: #7C5CBF;
+    background: #4cb1bb;
     border: none;
     color: white;
     font-size: 16px;
@@ -48,12 +48,12 @@ button {
 }
 
 button:hover {
-    background: #6b47b8;
+    background: #38838a;
 }
 
 button:disabled {
     cursor: default;
-    background: #7c5cbf94;
+    background: #2f4b4d;
 }
 
 /* Join Page Styles */
@@ -155,6 +155,8 @@ button:disabled {
 /* Chat styles */
 
 .chat__main {
+    background: #6e7979;
+    color: white;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -170,18 +172,26 @@ button:disabled {
 /* Message Styles */
 
 .message {
-    margin-bottom: 16px;   
+    margin-top: 16px; 
+    font-weight: 400;
+    font-size: 14px;  
 }
 
 .message__name {
+    color: rgb(164, 255, 230);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px;
     margin-right: 8px;
 }
 
 .message__meta {
-    color: #777;
-    font-size: 14px;
+    color: rgb(203, 203, 203);
+    font-size: 12px;
+}
+
+.message__add {
+    font-weight: 400;
+    font-size: 14px; 
 }
 
 .message a {
@@ -204,7 +214,9 @@ button:disabled {
 }
 
 .compose input {
-    border: 1px solid #eeeeee;
+    background: #4b5252;
+    color: white;
+    border: 1px solid #5e6767;
     width: 100%;
     padding: 12px;
     margin: 0 16px 0 0;

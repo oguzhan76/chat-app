@@ -5,7 +5,12 @@ const socketio = require('socket.io');
 const Filter = require('bad-words');
 const { generateMessage, generateLocationMessage } = require('./utils/messages');
 const { addUser, getUser, removeUser, getUsernamesInRoom } = require('./utils/users');
-const { getRooms, registerUserToRoom, deregisterUserFromRoom, getAllUsersInRoom } = require('./utils/rooms')
+const { getRoom,
+        getRooms, 
+        registerUserToRoom, 
+        deregisterUserFromRoom, 
+        getAllUsersInRoom } = require('./utils/rooms');
+const { ifError } = require('assert');
 
 
 const app = express();
@@ -54,7 +59,15 @@ io.on('connection', (socket) => {
         const user = getUser(socket.id);
 
         //Send the message to the room
-        io.to(user.room).emit('message', generateMessage(user.username, message));
+        const room = getRoom(user.room);
+        if(room.lastSender === user.id){
+            console.log('ayni sender');
+            io.to(user.room).emit('addMessage', message);
+        }
+        else{
+            room.lastSender = user.id;
+            io.to(user.room).emit('message', generateMessage(user.username, message));
+        }
         callback();
     })
     
