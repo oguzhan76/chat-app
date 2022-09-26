@@ -14,7 +14,7 @@ const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML;
 
 //Options
 // location.search return query paramters on the url. second arg is options object
-const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true });
+const { username, room, password } = Qs.parse(location.search, { ignoreQueryPrefix: true });
 
 const autoScroll = () => {
     // last message element
@@ -116,7 +116,7 @@ $locationButton.addEventListener('click', () => {
     });
 });
 
-socket.emit('join',{ username, room }, (error) => {
+socket.emit('join',{ username, roomName: room, password }, (error) => {
     if (error) {
         alert(error);
         location.href = '/';
